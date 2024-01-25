@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
 export const SocketContext = createContext();
-const socket = io("https://web-rtc-be.onrender.com");
+const socket = io("https://web-rtc-be.onrender.com/");
 
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState(null);
@@ -37,7 +37,7 @@ const ContextProvider = ({ children }) => {
     socket.on("calluser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivedCall: true, from, name: callerName, signal });
     });
-  }, []);
+  }, [socket.id]);
 
   const answerCall = () => {
     const peer = new Peer({ initiator: false, trickle: false, stream });
