@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
 export const SocketContext = createContext();
-const socket = io("http://localhost:4000/");
+const socket = io("https://web-rtc-be.onrender.com");
 
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState(null);
