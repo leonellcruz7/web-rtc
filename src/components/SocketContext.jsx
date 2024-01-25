@@ -40,6 +40,7 @@ const ContextProvider = ({ children }) => {
   }, [socket.id]);
 
   const answerCall = () => {
+    setCallAccepted(true);
     const peer = new Peer({ initiator: false, trickle: false, stream });
 
     peer.on("signal", (data) => {
